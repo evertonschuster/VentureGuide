@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:venture_guide/app/injector.dart';
+import 'package:venture_guide/app/map/domain/services/location_service.dart';
+import 'package:venture_guide/app/shared/widgets/alert/alert.dart';
+import 'package:venture_guide/app/shared/widgets/map_provider_widget/map_provider_controller.dart';
+
+class HomePageController extends ChangeNotifier {
+  final MapProviderController mapProviderController = MapProviderController();
+  final locationService = getIt<LocationService>();
+
+  HomePageController() {
+    onLoadData();
+  }
+
+  Future<void> onLoadData() async {
+    await onLoadCurrentLocation();
+  }
+
+  Future<void> onLoadCurrentLocation() async {
+    var location = await locationService.getCurrentLocation();
+
+    if (location.isSuccess) {
+      return mapProviderController.changeLocation(location.position!);
+    }
+
+    AlertService.showError(
+      location.errorMessage ?? "Erro ao carregar localização atual!",
+    );
+  }
+}

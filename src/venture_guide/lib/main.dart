@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:venture_guide/app/injector.dart';
-import 'package:venture_guide/app/map/presentation/pages/home_page/home_page.dart';
+import 'package:venture_guide/app/map/presentation/pages/home_page/home_page_widget.dart';
 
 void main() {
   configureDependencies();
   runApp(const MyApp());
 }
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  HomePage(),
+      home:  const HomePageWidget(),
+      navigatorKey: navigatorKey,
     );
   }
 }
