@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
 import 'package:venture_guide/app/injector.dart';
 import 'package:venture_guide/app/map/presentation/pages/home_page/home_page_widget.dart';
 
-void main() {
+Future<void> main() async {
   configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();  
+  await FlutterMapTileCaching.initialise();
+  await FMTC.instance('mapStore').manage.createAsync();
   runApp(const MyApp());
 }
 
@@ -15,13 +19,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  const HomePageWidget(),
+      home: const HomePageWidget(),
       navigatorKey: navigatorKey,
     );
   }
