@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ActionButtonsWidget extends StatelessWidget {
-  const ActionButtonsWidget({super.key});
+  const ActionButtonsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final pixelRatio = MediaQuery.of(context).devicePixelRatio;
 
     return SizedBox(
-      height: pixelRatio * 16,
+      height: pixelRatio * 18,
       child: ListView(
         scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.only(top: pixelRatio * 2),
         children: const [
           ActionButton(
             icon: Icons.store_mall_directory,
@@ -24,6 +25,7 @@ class ActionButtonsWidget extends StatelessWidget {
             icon: Icons.local_cafe,
             label: 'Café',
           ),
+          
         ],
       ),
     );
@@ -45,14 +47,14 @@ class ActionButton extends StatelessWidget {
     final pixelRatio = MediaQuery.of(context).devicePixelRatio;
 
     return Container(
-      margin: const EdgeInsets.all(5),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: EdgeInsets.only(left: pixelRatio * 1, right: pixelRatio * 1),
+      padding: EdgeInsets.symmetric(horizontal: pixelRatio * 4),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor.withOpacity(0.6),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(pixelRatio * 30),
         border: Border.all(
           color: Theme.of(context).primaryColor,
-          width: pixelRatio * .2,
+          width: pixelRatio * 0.2,
         ),
       ),
       child: Row(
@@ -60,8 +62,9 @@ class ActionButton extends StatelessWidget {
           Icon(
             icon,
             color: Theme.of(context).primaryColor,
+            size: pixelRatio * 8,
           ),
-          const SizedBox(width: 5),
+          SizedBox(width: pixelRatio * 2),
           Text(label),
         ],
       ),

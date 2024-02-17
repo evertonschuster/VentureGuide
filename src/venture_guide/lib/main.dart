@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
 import 'package:venture_guide/app/injector.dart';
 import 'package:venture_guide/app/map/presentation/pages/home_page/home_page_widget.dart';
+import 'package:wakelock/wakelock.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();  
   configureDependencies();
   await FlutterMapTileCaching.initialise();
   await FMTC.instance('mapStore').manage.createAsync();
+  Wakelock.enable();
   runApp(const MyApp());
 }
 
