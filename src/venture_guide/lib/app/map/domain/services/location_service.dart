@@ -1,5 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
+import 'package:venture_guide/app/map/domain/services/system_service.dart';
 
 class LocationResult {
   final Position? position;
@@ -19,19 +20,26 @@ abstract class LocationService {
 
 @Injectable(as: LocationService)
 class GeolocatorLocationService implements LocationService {
+  final SystemService systemService;
+
+  GeolocatorLocationService(this.systemService);
+
   @override
   Future<LocationResult> getLastLocation() async {
-    var result = await _checkLocationPermission();
-    if (result != null) {
-      return result;
+    final lastKnowLocation = await systemService.getLastKnowLocation();
+    if (lastKnowLocation != null) {
+      return LocationResult(position: lastKnowLocation);
     }
+
+    _checkLocationPermission();
 
     try {
       final position = await Geolocator.getLastKnownPosition();
       return LocationResult(position: position);
     } catch (e) {
       return LocationResult(
-          errorMessage: 'Erro ao obter a localização: ${e.toString()}');
+        errorMessage: 'Erro ao obter a localização: ${e.toString()}',
+      );
     }
   }
 
@@ -44,10 +52,12 @@ class GeolocatorLocationService implements LocationService {
 
     try {
       final Position position = await Geolocator.getCurrentPosition();
+      systemService.saveLastKnowLocation(position);
       return LocationResult(position: position);
     } catch (e) {
       return LocationResult(
-          errorMessage: 'Erro ao obter a localização: ${e.toString()}');
+        errorMessage: 'Erro ao obter a localização: ${e.toString()}',
+      );
     }
   }
 
@@ -55,18 +65,22 @@ class GeolocatorLocationService implements LocationService {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.deniedForever) {
       return LocationResult(
-          errorMessage: 'Permissão de localização negada permanentemente');
+        errorMessage: 'Permissão de localização negada permanentemente',
+      );
     }
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission != LocationPermission.whileInUse &&
           permission != LocationPermission.always) {
-        return LocationResult(errorMessage: 'Permissão de localização negada');
+        return LocationResult(
+          errorMessage: 'Permissão de localização negada',
+        );
       }
     }
     if (permission == LocationPermission.unableToDetermine) {
       return LocationResult(
-          errorMessage: 'Não foi possível determinar a permissão de localização');
+        errorMessage: 'Não foi possível determinar a permissão de localização',
+      );
     }
     return null;
   }

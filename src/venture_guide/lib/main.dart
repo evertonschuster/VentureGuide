@@ -4,8 +4,8 @@ import 'package:venture_guide/app/injector.dart';
 import 'package:venture_guide/app/map/presentation/pages/home_page/home_page_widget.dart';
 
 Future<void> main() async {
-  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();  
+  configureDependencies();
   await FlutterMapTileCaching.initialise();
   await FMTC.instance('mapStore').manage.createAsync();
   runApp(const MyApp());

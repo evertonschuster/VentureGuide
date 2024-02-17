@@ -17,7 +17,17 @@ class HomePageController extends ChangeNotifier {
   }
 
   Future<void> onLoadCurrentLocation() async {
+    var isLoad = false;
+
+    locationService.getLastLocation().then((value) => {
+          if (value.isSuccess && !isLoad)
+            {
+              mapProviderController.changeLocation(value.position!),
+            }
+        });
+
     var location = await locationService.getCurrentLocation();
+    isLoad = true;
 
     if (location.isSuccess) {
       return mapProviderController.changeLocation(location.position!);
