@@ -14,10 +14,30 @@ class DatabaseProvider {
     _database = await openDatabase(
       join(await getDatabasesPath(), 'venture_guide.db'),
       onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE systemSettings(id TEXT PRIMARY KEY, value TEXT)",
-        );
+        try {
+          db.execute(
+            "CREATE TABLE systemSettings(id TEXT PRIMARY KEY, value TEXT)",
+          );
+
+          db.execute('''
+          CREATE TABLE markers (
+            id TEXT PRIMARY KEY,
+            title TEXT,
+            description TEXT,
+            latitude REAL,
+            longitude REAL,
+            titleX INTEGER,
+            titleY INTEGER,
+            verifiedAt DATETIME
+          );
+
+          CREATE INDEX markers_titleX_titleY ON markers(titleX, titleY);
+        ''');
+        } catch (e) {
+          print(e);
+        }
       },
+      onUpgrade: (db, oldVersion, newVersion) => {},
       version: 1,
     );
   }

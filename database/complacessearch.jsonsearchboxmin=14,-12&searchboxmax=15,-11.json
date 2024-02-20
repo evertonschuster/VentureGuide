@@ -1,0 +1,217 @@
+[
+    {
+        "id": 8617,
+        "name": "Kamankole Palace",
+        "description": "\"Best Hotel in Town\" 5000CFA for all(camping)! Bar, Pool, clean Shower and Toilette next to Pool, Wifi. Very friendly stuff.",
+        "date_verified": "2019-08-29 08:18:48 UTC",
+        "category_icon_path": "/assets/icons/hotel-71898a599ea78558e31ebc5213f545e98d06af07a053aad152056781d6aca99a.png",
+        "category_icon_pin_path": "/assets/icons/hotel-pin-50ee1014ad56c7a9bd524456b5a44a3228647b55b12856f208c188ee0f72094e.png",
+        "category_icon_pin_closed_path": "/assets/icons/hotel-pin_closed-3346ee6543c96c11ee09e1f94561851caebf2b11bba463f10d3d1f87b4c81c29.png",
+        "amenities": {
+            "Open": "Yes",
+            "Electricity": "Yes - Not at Sites",
+            "Wifi": "Yes - Average",
+            "Kitchen": "Unknown",
+            "Parking": "Unknown",
+            "Restaurant": "Yes",
+            "Showers": "Cold",
+            "Water": "Unknown",
+            "Toilets": "Running Water",
+            "Big Rig Friendly": "Unknown",
+            "Tent Friendly": "Unknown",
+            "Pet Friendly": "Unknown"
+        },
+        "country": "Mali",
+        "category": "Hotel",
+        "location": {
+            "latitude": 14.457946079796606,
+            "longitude": -11.465696208189675,
+            "altitude": 34.03240966796875,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 31262,
+        "name": "Kayes Immigration",
+        "description": "Commissariat Special de Police/Immigration ",
+        "date_verified": "2018-11-25 08:14:35 UTC",
+        "category_icon_path": "/assets/icons/border-b4b46b2b703c65da4212a1ebf827c97cceb034108ca2329e066afbad79b8287e.png",
+        "category_icon_pin_path": "/assets/icons/border-pin-415f73b74defcb33f15acd1bf506004f901190e2dd314188aeb87f3a97bf3ae3.png",
+        "category_icon_pin_closed_path": "/assets/icons/border-pin_closed-4b51a8ca64d657a9fefa7b7c7db2bb4056842c77219094d8c63e4a0a5652ce51.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mali",
+        "category": "Customs and Immigration",
+        "location": {
+            "latitude": 14.434920991784367,
+            "longitude": -11.427825931470307,
+            "altitude": 43.31817626953125,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 31263,
+        "name": "Douanes de Melga, Mali",
+        "description": "Stamped Carnet de Passage",
+        "date_verified": "2017-03-10 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/border-b4b46b2b703c65da4212a1ebf827c97cceb034108ca2329e066afbad79b8287e.png",
+        "category_icon_pin_path": "/assets/icons/border-pin-415f73b74defcb33f15acd1bf506004f901190e2dd314188aeb87f3a97bf3ae3.png",
+        "category_icon_pin_closed_path": "/assets/icons/border-pin_closed-4b51a8ca64d657a9fefa7b7c7db2bb4056842c77219094d8c63e4a0a5652ce51.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mali",
+        "category": "Customs and Immigration",
+        "location": {
+            "latitude": 14.902281370027831,
+            "longitude": -11.792584732185855,
+            "altitude": 37.37548828125,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 31264,
+        "name": "Douane Immigration Melgue",
+        "description": "Douane, they didn't stamped the Carnet de Passage (didn't know, what it is) sent us to Selibaby. In Selibaby we got the stamp.\r\nImmigration; they couldn't gave us visas and sent us with a police guy to Selibaby, in Selibaby they sent us to Nouakchott. Called us in between 21x!! In Nouakchott they used 2days for Visa, make sure, that you have the visa, before you enter the country!",
+        "date_verified": "2017-03-10 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/border-b4b46b2b703c65da4212a1ebf827c97cceb034108ca2329e066afbad79b8287e.png",
+        "category_icon_pin_path": "/assets/icons/border-pin-415f73b74defcb33f15acd1bf506004f901190e2dd314188aeb87f3a97bf3ae3.png",
+        "category_icon_pin_closed_path": "/assets/icons/border-pin_closed-4b51a8ca64d657a9fefa7b7c7db2bb4056842c77219094d8c63e4a0a5652ce51.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mauritania",
+        "category": "Customs and Immigration",
+        "location": {
+            "latitude": 14.90347,
+            "longitude": -11.8023,
+            "altitude": 38.021728515625,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 45098,
+        "name": "Hotel Bouna",
+        "description": "double with AC 27000 but if you ask they also have double for 10000 with fan and secured parking, fairly clean and pretty much the only choice in town. Singles 22500 with AC",
+        "date_verified": "2019-09-07 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/hotel-71898a599ea78558e31ebc5213f545e98d06af07a053aad152056781d6aca99a.png",
+        "category_icon_pin_path": "/assets/icons/hotel-pin-50ee1014ad56c7a9bd524456b5a44a3228647b55b12856f208c188ee0f72094e.png",
+        "category_icon_pin_closed_path": "/assets/icons/hotel-pin_closed-3346ee6543c96c11ee09e1f94561851caebf2b11bba463f10d3d1f87b4c81c29.png",
+        "amenities": {
+            "Open": "Yes",
+            "Electricity": "Yes - At Sites",
+            "Wifi": "Yes - Average",
+            "Kitchen": "No",
+            "Parking": "Yes",
+            "Restaurant": "Yes",
+            "Showers": "Hot",
+            "Water": "Potable",
+            "Toilets": "Running Water",
+            "Big Rig Friendly": "Yes",
+            "Tent Friendly": "No",
+            "Pet Friendly": "Yes"
+        },
+        "country": "Mali",
+        "category": "Hotel",
+        "location": {
+            "latitude": 14.45457421,
+            "longitude": -11.46533712,
+            "altitude": 64.0,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 90904,
+        "name": "gendarmerie and police",
+        "description": "checked in after coming from kiffa, Mauritanië. gendarmerie wrote down our information. got a stamp in our passport from the police. \r\npolice is just acros the gendarmerie. took us 5 minutes. very friendly",
+        "date_verified": "2019-04-19 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/border-b4b46b2b703c65da4212a1ebf827c97cceb034108ca2329e066afbad79b8287e.png",
+        "category_icon_pin_path": "/assets/icons/border-pin-415f73b74defcb33f15acd1bf506004f901190e2dd314188aeb87f3a97bf3ae3.png",
+        "category_icon_pin_closed_path": "/assets/icons/border-pin_closed-4b51a8ca64d657a9fefa7b7c7db2bb4056842c77219094d8c63e4a0a5652ce51.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mali",
+        "category": "Customs and Immigration",
+        "location": {
+            "latitude": 14.963402124121785,
+            "longitude": -11.588429231196642,
+            "altitude": 93.0,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 135165,
+        "name": "The Gouina Falls",
+        "description": "The Gouina Falls or Chutes de Gouina are on the Sénégal River in Mali. between Bafoulabé and Diamou, Kayes region.",
+        "date_verified": "2018-03-10 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/tourist-8b5e0ddbbd11cd0dfc2bbb29ec1899400a16d9ab191694dd79b2cc230be2dce2.png",
+        "category_icon_pin_path": "/assets/icons/tourist-pin-0759f6b142d33c382e149169f2846c2f9c757730f5e6f98107ccb5f149c63b74.png",
+        "category_icon_pin_closed_path": "/assets/icons/tourist-pin_closed-b196f1c77b0e7d8f0e50a4be08d4b63128ca60ec3324b1597bb0fb734d78dfd5.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mali",
+        "category": "Tourist Attraction",
+        "location": {
+            "latitude": 14.01333,
+            "longitude": -11.10405,
+            "altitude": null,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 259185,
+        "name": "ATM",
+        "description": "BDM & Bank of Africa ATM. Only BDM worked for me with visa card. I got 70,000 with 1,500 charge",
+        "date_verified": "2024-01-16 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/financial-1a5339d7d27def0669969db9087ece96a4598d2ab94cb20cffb4fbb4be04eee8.png",
+        "category_icon_pin_path": "/assets/icons/financial-pin-49811951cf9d8e62493baf99d79a339e0289bbd84daf56f80f2882ca3e25da8f.png",
+        "category_icon_pin_closed_path": "/assets/icons/financial-pin_closed-4491b030a07c4ecfb25bfbc4cdfd6560aa77f0e0da2a2ec0d76a0cd3c26440cc.png",
+        "amenities": {
+            "Open": "Yes"
+        },
+        "country": "Mali",
+        "category": "Financial",
+        "location": {
+            "latitude": 14.446706,
+            "longitude": -11.434451,
+            "altitude": -1.0,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    },
+    {
+        "id": 259186,
+        "name": "Motor Oil & parts",
+        "description": "Sign for the shop says Japanese auto (or something similar) Friendly guys, the only place in Kayes I could find 5W30 motor oil",
+        "date_verified": "2024-01-16 00:00:00 UTC",
+        "category_icon_path": "/assets/icons/mechanic-545f398d908524fa9a0b3c256ef8a58656cdeca546550cf34b84cf7dd3fe6c99.png",
+        "category_icon_pin_path": "/assets/icons/mechanic-pin-8ac373092df60ce6d7c29fb97efd468fa05b8e65422ff21d76ccb83f445a0c4d.png",
+        "category_icon_pin_closed_path": "/assets/icons/mechanic-pin_closed-be067654612c63e4d59dcffaaa9e1e48bc70a687073d6cbb0fbafe0060365af4.png",
+        "amenities": {
+            "Open": "Yes",
+            "Repairs Vehicles": "Unknown",
+            "Repairs Motorcycles": "Unknown",
+            "Repairs Bicycles": "No",
+            "Sells Parts": "Yes"
+        },
+        "country": "Mali",
+        "category": "Mechanic and Parts",
+        "location": {
+            "latitude": 14.44314,
+            "longitude": -11.432115,
+            "altitude": 99.0,
+            "horizontal_accuracy": null,
+            "vertical_accuracy": null
+        }
+    }
+]

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:venture_guide/app/injector.dart';
+import 'package:injectable/injectable.dart';
 import 'package:venture_guide/app/map/domain/services/location_service.dart';
 import 'package:venture_guide/app/shared/widgets/alert/alert.dart';
 import 'package:venture_guide/app/shared/widgets/map_provider_widget/map_provider_controller.dart';
 
+@Injectable()
 class HomePageController extends ChangeNotifier {
-  final MapProviderController mapProviderController = MapProviderController();
-  final locationService = getIt<LocationService>();
+  final MapProviderController mapProviderController;
+  final LocationService locationService;
 
-  HomePageController() {
+  HomePageController(this.mapProviderController, this.locationService) {
     onLoadData();
   }
 
