@@ -1,4 +1,4 @@
-package com.example.venture_guide
+package br.com.schuster.everton.venture_guide
 
 import io.flutter.embedding.android.FlutterActivity
 

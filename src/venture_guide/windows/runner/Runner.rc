@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "br.com.schuster.everton" "\0"
             VALUE "FileDescription", "venture_guide" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "venture_guide" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 br.com.schuster.everton. All rights reserved." "\0"
             VALUE "OriginalFilename", "venture_guide.exe" "\0"
             VALUE "ProductName", "venture_guide" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
