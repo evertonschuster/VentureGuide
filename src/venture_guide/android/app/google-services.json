@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "660560608016",
+    "project_id": "venture-guide",
+    "storage_bucket": "venture-guide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660560608016:android:16916a0c51888b8d234395",
+        "android_client_info": {
+          "package_name": "br.com.schuster.everton.venture_guide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjfOx_oKmW9mZCZD5CU3hPqqOXVA3AmpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
