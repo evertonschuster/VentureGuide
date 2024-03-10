@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -43,8 +44,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBUnauLkWVO_LKQeuzPWW_wJGs-u6yZuFs',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['webApiKey'].toString(),
     appId: '1:660560608016:web:5bf0dd0e3eda13cc234395',
     messagingSenderId: '660560608016',
     projectId: 'venture-guide',
@@ -53,16 +54,16 @@ class DefaultFirebaseOptions {
     measurementId: 'G-NFSV376SW5',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCjfOx_oKmW9mZCZD5CU3hPqqOXVA3AmpE',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['androidApiKey'].toString(),
     appId: '1:660560608016:android:16916a0c51888b8d234395',
     messagingSenderId: '660560608016',
     projectId: 'venture-guide',
     storageBucket: 'venture-guide.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDoOzBf4ZhZsu_QhPhqp0kmKU7ODUq3Luc',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['iosApiKey'].toString(),
     appId: '1:660560608016:ios:7c539d791d4d36ce234395',
     messagingSenderId: '660560608016',
     projectId: 'venture-guide',
@@ -70,8 +71,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'br.com.schuster.everton.ventureGuide',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDoOzBf4ZhZsu_QhPhqp0kmKU7ODUq3Luc',
+  static FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['iosApiKey'].toString(),
     appId: '1:660560608016:ios:87cfb321939caffe234395',
     messagingSenderId: '660560608016',
     projectId: 'venture-guide',
