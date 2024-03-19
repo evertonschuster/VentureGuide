@@ -13,6 +13,9 @@ import * as logger from "firebase-functions/logger";
 // import { Place } from "./dtos/place";
 import { Category } from "./models/category";
 import * as categoryService from "./services/categoryService";
+import * as markerService from "./services/markerService";
+import { Place } from "./dtos/place";
+import { Marker } from "./models/marker";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -24,13 +27,31 @@ export const helloWorld = onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
-export const importPlaces = onRequest((request, response) => {
+export const importPlaces = onRequest(async (request, response) => {
   logger.info("Recevid request to insert data", { structuredData: true });
+  const categories = await categoryService.getAll();
 
-  // const datas = request.body as Place[];
+  const datas = request.body as Place[];
+  const markers = [];
+  for (const place of datas) {
+    let category = categories.find((c) => c.name === place.category.name);
+    if (!category) {
+      category = await categoryService.create(place.category.name);
+      categories.push(category);
+    }
+    markers.push({
+      id: place.id?.toString(),
+      categoryId: category.id,
+      title: place.name,
+      description: place.description,
+      latitude: place.location.latitude,
+      longitude: place.location.longitude,
+      verifiedAt: new Date(place.date_verified),
+    } as Marker);
+  }
 
-
-  response.send("Hello from Firebase!" + JSON.stringify(request.body));
+  await markerService.insertUpdateMarkers(markers);
+  response.send(markers);
 });
 
 export const importCategories = onRequest(async (request, response) => {
