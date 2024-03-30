@@ -54,6 +54,13 @@ export const importPlaces = onRequest(async (request, response) => {
   response.send(markers);
 });
 
+export const getAllIds = onRequest(async (request, response) => {
+  logger.info("Recevid request to get all ids", { structuredData: true });
+
+  const result = await markerService.getAllIds();
+  response.status(200).send(result);
+});
+
 export const importCategories = onRequest(async (request, response) => {
   logger.info("Recevid request to insert data", { structuredData: true });
 

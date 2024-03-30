@@ -23,3 +23,10 @@ export const insertUpdateMarkers = async (markers: Marker[]) => {
     return (await markersRef.orderBy("title").get())
         .docs.map((doc) => doc.data() as Marker);
 }
+
+export const getAllIds= () => {
+    return firebase.firestore().collection("markers").get()
+        .then((snapshot) => {
+            return snapshot.docs.map((doc) => doc.id);
+        });
+}
