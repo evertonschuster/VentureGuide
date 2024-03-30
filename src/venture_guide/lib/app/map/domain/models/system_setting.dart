@@ -15,11 +15,4 @@ class SystemSetting {
     'key': key,
     'value': value,
   };
-
-  Map<String, dynamic> toMap() {
-    return {
-      'key': key,
-      'value': value,
-    };
-  }
 }

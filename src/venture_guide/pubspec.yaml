@@ -46,6 +46,7 @@ dependencies:
   wakelock: ^0.6.2
   firebase_core: ^2.24.2
   flutter_dotenv: ^5.1.0
+  reflectable: ^4.0.6
 
 dev_dependencies:
   flutter_test:

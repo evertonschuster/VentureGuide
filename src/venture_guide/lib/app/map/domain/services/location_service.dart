@@ -1,6 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:venture_guide/app/map/domain/services/system_service.dart';
+import 'package:venture_guide/app/map/domain/services/system_settings_service.dart';
 
 class LocationResult {
   final Position? position;
@@ -20,7 +20,7 @@ abstract class LocationService {
 
 @Injectable(as: LocationService)
 class GeolocatorLocationService implements LocationService {
-  final SystemService systemService;
+  final SystemSettingsService systemService;
 
   GeolocatorLocationService(this.systemService);
 
@@ -31,7 +31,7 @@ class GeolocatorLocationService implements LocationService {
       return LocationResult(position: lastKnowLocation);
     }
 
-    _checkLocationPermission();
+    await _checkLocationPermission();
 
     try {
       final position = await Geolocator.getLastKnownPosition();
@@ -52,7 +52,7 @@ class GeolocatorLocationService implements LocationService {
 
     try {
       final Position position = await Geolocator.getCurrentPosition();
-      systemService.saveLastKnowLocation(position);
+      await systemService.saveLastKnowLocation(position);
       return LocationResult(position: position);
     } catch (e) {
       return LocationResult(

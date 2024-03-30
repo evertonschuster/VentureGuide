@@ -16,7 +16,7 @@ class DatabaseProvider {
       onCreate: (db, version) {
         try {
           db.execute(
-            "CREATE TABLE systemSettings(id TEXT PRIMARY KEY, value TEXT)",
+            "CREATE TABLE systemSettings(key TEXT PRIMARY KEY, value TEXT)",
           );
 
           db.execute('''
