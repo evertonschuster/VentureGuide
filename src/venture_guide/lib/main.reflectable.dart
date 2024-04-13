@@ -43,7 +43,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null)
       ],
       <m.DeclarationMirror>[
-        r.VariableMirrorImpl(r'isSystemSync', 67239941, 0,
+        r.VariableMirrorImpl(r'isMarkerLoad', 67239941, 0,
             const prefix0.Reflector(), -1, 1, 1, const <int>[], const []),
         r.MethodMirrorImpl(r'toJson', 35651586, 0, -1, 2, 3, null,
             const <int>[], const prefix0.Reflector(), const <Object>[override]),
@@ -66,7 +66,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(r'json', 84017158, 4, const prefix0.Reflector(),
             -1, 8, 9, null, const [], null, null),
         r.ParameterMirrorImpl(
-            r'_isSystemSync',
+            r'_isMarkerLoad',
             67240038,
             3,
             const prefix0.Reflector(),
@@ -114,11 +114,11 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r'hashCode': (dynamic instance) => instance.hashCode,
         r'runtimeType': (dynamic instance) => instance.runtimeType,
         r'toJson': (dynamic instance) => instance.toJson,
-        r'isSystemSync': (dynamic instance) => instance.isSystemSync
+        r'isMarkerLoad': (dynamic instance) => instance.isMarkerLoad
       },
       {
-        r'isSystemSync=': (dynamic instance, value) =>
-            instance.isSystemSync = value
+        r'isMarkerLoad=': (dynamic instance, value) =>
+            instance.isMarkerLoad = value
       },
       <m.LibraryMirror>[
         r.LibraryMirrorImpl(

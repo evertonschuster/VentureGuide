@@ -3,12 +3,12 @@ import 'package:venture_guide/app/reflector.dart';
 
 @reflector
 class SystemMarkersInit extends TSystemSetting {
-  bool? isSystemSync = false;
+  bool? isMarkerLoad = false;
 
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['isSystemSync'] = isSystemSync;
+    data['isMarkerLoad'] = isMarkerLoad;
     return data;
   }
 
@@ -18,6 +18,6 @@ class SystemMarkersInit extends TSystemSetting {
       return;
     }
 
-    isSystemSync = json['isSystemSync'];
+    isMarkerLoad = json['isMarkerLoad'];
   }
 }

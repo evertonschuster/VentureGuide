@@ -18,13 +18,12 @@ class SyncServiceImpl implements SyncService {
   Future<void> initApp() async {
     var isSystemSync =
         await _systemService.getConfiguration<SystemMarkersInit>();
-        
-    if (isSystemSync.isSystemSync == true) {
-      return;
-    }
 
-    await _markerService.syncMarkers();
-    isSystemSync.isSystemSync = true;
-    await _systemService.setConfiguration(isSystemSync);
+    if (isSystemSync.isMarkerLoad != true) {
+      _markerService.syncMarkers().then((value) async {
+        isSystemSync.isMarkerLoad = true;
+        await _systemService.setConfiguration(isSystemSync);
+      });
+    }
   }
 }

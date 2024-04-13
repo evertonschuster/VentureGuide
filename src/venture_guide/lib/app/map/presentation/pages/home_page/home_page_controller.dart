@@ -20,22 +20,21 @@ class HomePageController extends ChangeNotifier {
   Future<void> onLoadCurrentLocation() async {
     var isLoad = false;
 
-    locationService.getLastLocation().then((value) => {
-          if (value.isSuccess && !isLoad)
-            {
-              mapProviderController.changeLocation(value.position!),
-            }
-        });
+    locationService.getLastLocation().then((value) {
+      if (value.isSuccess && !isLoad) {
+        mapProviderController.changeLocation(value.position!);
+      }
+    });
 
-    var location = await locationService.getCurrentLocation();
-    isLoad = true;
+    locationService.getCurrentLocation().then((location) {
+      if (location.isSuccess) {
+        isLoad = true;
+        return mapProviderController.changeLocation(location.position!);
+      }
 
-    if (location.isSuccess) {
-      return mapProviderController.changeLocation(location.position!);
-    }
-
-    AlertService.showError(
-      location.errorMessage ?? "Erro ao carregar localização atual!",
-    );
+      AlertService.showError(
+        location.errorMessage ?? "Erro ao carregar localização atual!",
+      );
+    });
   }
 }
