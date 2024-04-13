@@ -13,26 +13,27 @@ class MarkerRepositoryImpl implements MarkerRepository {
   MarkerRepositoryImpl(this._databaseProvider);
 
   @override
-  Future<List<Marker>> getMarkers(Point<int> title) {
+  Future<List<Marker>> getMarkers(Point<int> title) async {
     final db = _databaseProvider.database;
-    return db.query(
+    final result = await db.query(
       'markers',
       where: 'titleX = ? AND titleY = ?',
       whereArgs: [title.x, title.y],
-    ).then((value) {
-      return value.map((e) {
-        return Marker(
-          id: e['id'] as String,
-          title: e['title'] as String,
-          description: e['description'] as String,
-          latitude: e['latitude'] as double,
-          longitude: e['longitude'] as double,
-          titleX: e['titleX'] as int,
-          titleY: e['titleY'] as int,
-          verifiedAt: DateTime.parse(e['verifiedAt'] as String),
-        );
-      }).toList();
-    });
+    );
+
+    return result.map((e) {
+      return Marker(
+        id: e['id'] as String,
+        title: e['title'] as String,
+        description: e['description'] as String,
+        latitude: e['latitude'] as double,
+        longitude: e['longitude'] as double,
+        titleX: e['titleX'] as int,
+        titleY: e['titleY'] as int,
+        categoryId: e['categoryId'] as String,
+        verifiedAt: DateTime.parse(e['verifiedAt'] as String),
+      );
+    }).toList();
   }
 
   @override
@@ -51,6 +52,7 @@ class MarkerRepositoryImpl implements MarkerRepository {
           'longitude': marker.longitude,
           'titleX': marker.titleX,
           'titleY': marker.titleY,
+          'categoryId': marker.categoryId,
           'verifiedAt': marker.verifiedAt.toIso8601String(),
         },
         conflictAlgorithm: ConflictAlgorithm.replace,

@@ -1,12 +1,10 @@
-import 'dart:convert';
 import 'dart:math';
 
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:venture_guide/app/map/domain/api/marker_api.dart';
 import 'package:venture_guide/app/map/domain/models/marker.dart';
 import 'package:venture_guide/app/map/domain/repositories/marker_repository.dart';
-import 'package:venture_guide/app/map/domain/services/tile_service.dart';
+import 'package:venture_guide/app/map/domain/services/location_service.dart';
 
 abstract class MarkerService {
   Future<List<Marker>> getMarkers(Point<int> title);
@@ -19,9 +17,11 @@ abstract class MarkerService {
 @Injectable(as: MarkerService)
 class MarkerServiceImpl implements MarkerService {
   final MarkerRepository _markerRepository;
-  final TitleService _titleService;
+  final MarkerApi _markerApi;
+  final LocationService _locationService;
 
-  MarkerServiceImpl(this._markerRepository, this._titleService);
+  MarkerServiceImpl(this._markerRepository, this._markerApi,
+      this._locationService);
 
   @override
   Future<List<Marker>> getMarkers(Point<int> title) {
@@ -35,32 +35,15 @@ class MarkerServiceImpl implements MarkerService {
 
   @override
   Future<void> syncMarkers() async {
-    final String response =
-        await rootBundle.loadString('lib/assets/database/places_brazil.json');
-    final data = await json.decode(response);
+    final location = await _locationService.getCurrentLocation();
 
-    final markers = (data as List).map((e) {
-      final id = e['id'] as int;
-      final title = e['name'] as String;
-      final description = e['description'] as String;
-      final latitude = e['location']["latitude"] as double;
-      final longitude = e['location']["longitude"] as double;
-      final verifiedAt = e['date_verified'] as String;
+    if (location.isFail) {
+      return;
+    }
 
-      final titleValue =
-          _titleService.latLngToTile(LatLng(latitude, longitude));
-
-      return Marker(
-        id: id.toString(),
-        title: title,
-        description: description,
-        latitude: latitude,
-        longitude: longitude,
-        titleX: titleValue.x,
-        titleY: titleValue.y,
-        verifiedAt: DateTime.parse(verifiedAt),
-      );
-    }).toList();
+    final latitude = location.position!.latitude;
+    final longitude = location.position!.longitude;
+    final markers = await _markerApi.getNearbyPlaces(latitude, longitude);
 
     const int sublistSize = 100;
     for (int i = 0; i < markers.length; i += sublistSize) {

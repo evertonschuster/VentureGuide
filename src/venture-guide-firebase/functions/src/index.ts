@@ -22,11 +22,6 @@ import { Marker } from "./models/marker";
 
 firebase.initializeApp();
 
-export const helloWorld = onRequest((request, response) => {
-  logger.info("Hello logs!", { structuredData: true });
-  response.send("Hello from Firebase!");
-});
-
 export const importPlaces = onRequest(async (request, response) => {
   logger.info("Recevid request to insert data", { structuredData: true });
   const categories = await categoryService.getAll();
@@ -51,14 +46,27 @@ export const importPlaces = onRequest(async (request, response) => {
   }
 
   await markerService.insertUpdateMarkers(markers);
-  response.send(markers);
+  response.json(markers);
 });
 
-export const getAllIds = onRequest(async (request, response) => {
-  logger.info("Recevid request to get all ids", { structuredData: true });
+export const getNearbyPlaces = onRequest(async (request, response) => {
+  logger.info("Recevid request ", request.body, request.query, request.params);
 
-  const result = await markerService.getAllIds();
-  response.status(200).send(result);
+  const latitude = request.body.data?.latitude as string;
+  const longitude = request.body.data?.longitude as string;
+
+  if (!latitude || !longitude) {
+    response.status(400).json({ error: "Invalid request" });
+    return;
+  }
+
+  const places = await markerService.getNearbyPlaces(
+    parseFloat(latitude),
+    parseFloat(longitude)
+  );
+
+  logger.info("places", places);
+  response.json({ data: places });
 });
 
 export const importCategories = onRequest(async (request, response) => {
@@ -66,5 +74,5 @@ export const importCategories = onRequest(async (request, response) => {
 
   const datas = request.body as Category[];
   const result = await categoryService.insertUpdateCategories(datas);
-  response.status(200).send(result);
+  response.status(200).json(result);
 });

@@ -28,6 +28,7 @@ class DatabaseProvider {
             longitude REAL,
             titleX INTEGER,
             titleY INTEGER,
+            categoryId TEXT,
             verifiedAt DATETIME
           );
 
