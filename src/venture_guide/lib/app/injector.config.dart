@@ -60,15 +60,15 @@ _i1.GetIt init(
   gh.factory<_i11.TitleService>(() => _i11.TitleService());
   gh.factory<_i12.LocationService>(
       () => _i12.GeolocatorLocationService(gh<_i10.SystemSettingsService>()));
-  gh.factory<_i13.MarkerService>(() => _i13.MarkerServiceImpl(
-        gh<_i6.MarkerRepository>(),
-        gh<_i4.MarkerApi>(),
-        gh<_i12.LocationService>(),
-      ));
-  gh.factory<_i14.SyncService>(() => _i14.SyncServiceImpl(
-        gh<_i10.SystemSettingsService>(),
-        gh<_i13.MarkerService>(),
-      ));
+  gh.singleton<_i13.MarkerService>(_i13.MarkerServiceImpl(
+    gh<_i6.MarkerRepository>(),
+    gh<_i4.MarkerApi>(),
+    gh<_i12.LocationService>(),
+  ));
+  gh.singleton<_i14.SyncService>(_i14.SyncServiceImpl(
+    gh<_i10.SystemSettingsService>(),
+    gh<_i13.MarkerService>(),
+  ));
   gh.singleton<_i15.MarkerMapService>(_i15.MarkerMapService(
     gh<_i11.TitleService>(),
     gh<_i13.MarkerService>(),

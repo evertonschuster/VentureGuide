@@ -7,7 +7,7 @@ abstract class SyncService {
   Future<void> initApp();
 }
 
-@Injectable(as: SyncService)
+@Singleton(as: SyncService)
 class SyncServiceImpl implements SyncService {
   final SystemSettingsService _systemService;
   final MarkerService _markerService;

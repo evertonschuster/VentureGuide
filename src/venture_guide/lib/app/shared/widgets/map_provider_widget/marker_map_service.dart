@@ -20,7 +20,18 @@ class MarkerMapService {
   final TitleService _titleService;
   final MarkerService _markerService;
 
-  MarkerMapService(this._titleService, this._markerService);
+  MarkerMapService(this._titleService, this._markerService) {
+    _markerService.titleLoaderStream.listen((event) {
+      if (titleLoader.containsKey(event.title)) {
+        for (var marker in event.markers) {
+          if (!markers.any((m) => m.id == marker.id)) {
+            markers.add(marker);
+          }
+        }
+        _emitEvent(event.markers);
+      }
+    });
+  }
 
   Stream<List<Marker>> get mapEventStream => _mapEventStream.stream;
   StreamSink<List<Marker>> get _mapEventSink => _mapEventStream.sink;
