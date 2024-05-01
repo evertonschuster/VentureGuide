@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:venture_guide/app/map/data/data_base.dart';
 import 'package:venture_guide/app/map/domain/models/marker.dart';
+import 'package:venture_guide/app/map/domain/models/marker_title.dart';
 import 'package:venture_guide/app/map/domain/repositories/marker_repository.dart';
 
 @Injectable(as: MarkerRepository)
@@ -60,5 +61,41 @@ class MarkerRepositoryImpl implements MarkerRepository {
     }
 
     return batch.commit();
+  }
+
+  @override
+  Future<MarkerTitle?> getMarkerTitle(Point<int> title) async {
+    final db = _databaseProvider.database;
+
+    final result = await db.query(
+      'markerTitles',
+      where: 'titleX = ? AND titleY = ?',
+      whereArgs: [title.x, title.y],
+    );
+
+    if (result.isEmpty) {
+      return null;
+    }
+
+    return MarkerTitle(
+      titleX: result.first['titleX'] as int,
+      titleY: result.first['titleY'] as int,
+      downloadedAt: DateTime.parse(result.first['downloadedAt'] as String),
+    );
+  }
+
+  @override
+  Future saveMarkerTitle(MarkerTitle markerTitle) {
+    final db = _databaseProvider.database;
+
+    return db.insert(
+      'markerTitles',
+      {
+        'titleX': markerTitle.titleX,
+        'titleY': markerTitle.titleY,
+        'downloadedAt': markerTitle.downloadedAt.toIso8601String(),
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 }

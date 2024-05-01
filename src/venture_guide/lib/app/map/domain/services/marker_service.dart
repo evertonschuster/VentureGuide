@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:injectable/injectable.dart';
 import 'package:venture_guide/app/map/domain/api/marker_api.dart';
 import 'package:venture_guide/app/map/domain/models/marker.dart';
+import 'package:venture_guide/app/map/domain/models/marker_title.dart';
 import 'package:venture_guide/app/map/domain/repositories/marker_repository.dart';
 import 'package:venture_guide/app/map/domain/services/location_service.dart';
 import 'package:venture_guide/app/shared/Iterable/group_by_extension.dart';
@@ -43,6 +44,11 @@ class MarkerServiceImpl implements MarkerService {
 
   @override
   Future<List<Marker>> getMarkers(Point<int> title) {
+    _markerRepository.getMarkerTitle(title).then((value) async {
+      if (value == null) {
+        await _getPlaces(title.x, title.y);
+      }
+    });
     return _markerRepository.getMarkers(title);
   }
 
@@ -61,18 +67,45 @@ class MarkerServiceImpl implements MarkerService {
 
     final latitude = location.position!.latitude;
     final longitude = location.position!.longitude;
+    await _getNearbyPlaces(latitude, longitude);
+  }
+
+  Future<void> _getNearbyPlaces(double latitude, double longitude) async {
     final markers = await _markerApi.getNearbyPlaces(latitude, longitude);
 
     var titlesMarkers = markers.groupBy((p0) => Point(p0.titleX, p0.titleY));
 
-    titlesMarkers.forEach((key, tilemarkers) {
+    titlesMarkers.forEach((key, tilemarkers) async {
       const int sublistSize = 100;
       for (int i = 0; i < tilemarkers.length; i += sublistSize) {
         final sublist =
             tilemarkers.sublist(i, min(i + sublistSize, tilemarkers.length));
-        _markerRepository.saveMarkers(sublist);
+       await  _markerRepository.saveMarkers(sublist);
       }
+
+      final markerTitle = MarkerTitle(
+        titleX: key.x,
+        titleY: key.y,
+        downloadedAt: DateTime.now(),
+      );
+
+      await _markerRepository.saveMarkerTitle(markerTitle);
       titleLoaderSink.add(TitleMarker(key, tilemarkers));
     });
+  }
+
+  _getPlaces(int x, int y) async {
+    final markers = await _markerApi.getPlaces(x, y);
+
+    await _markerRepository.saveMarkers(markers);
+
+    final markerTitle = MarkerTitle(
+      titleX: x,
+      titleY: y,
+      downloadedAt: DateTime.now(),
+    );
+
+    await _markerRepository.saveMarkerTitle(markerTitle);
+    titleLoaderSink.add(TitleMarker(Point(x, y), markers));
   }
 }

@@ -46,3 +46,17 @@ export const getNearbyPlaces = async (latitude: number, longitude: number) => {
 
     return markers.docs.map((doc) => doc.data() as Marker);
 }
+
+export const getPlaces = async (titleX: number, titleY: number) => {
+    const filters = Filter.and(
+        Filter.where("titleX", "==", titleX),
+        Filter.where("titleY", "==", titleY)
+    );
+
+    const markersRef = firebase.firestore().collection("markers");
+    const markers = await markersRef
+        .where(filters)
+        .get()
+
+    return markers.docs.map((doc) => doc.data() as Marker);
+}

@@ -23,4 +23,16 @@ class MarkerApiImpl extends MarkerApi {
   
     return markers;
   }
+  
+  @override
+  Future<List<Marker>> getPlaces(int titleX, int titleY) async {
+    final callable = FirebaseFunctions.instance.httpsCallable('getPlaces');
+    final response = await callable.call<List<Object?>>({'titleX': titleX, "titleY" : titleY});
+
+    List<Marker> markers = [];
+    List<Object?> data = response.data;
+    markers = data.map((item) => Marker.fromJson(item as Map<Object?, Object?>)).toList();
+  
+    return markers;
+  }
 }

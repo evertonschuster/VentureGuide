@@ -34,6 +34,16 @@ class DatabaseProvider {
 
           CREATE INDEX markers_titleX_titleY ON markers(titleX, titleY);
         ''');
+
+          db.execute('''
+          CREATE TABLE markerTitles (
+            titleX INTEGER,
+            titleY INTEGER,
+            downloadedAt DATETIME,
+            PRIMARY KEY (titleX, titleY)
+          );
+
+        ''');
         } catch (e) {
           print(e);
         }

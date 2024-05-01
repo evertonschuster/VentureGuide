@@ -69,6 +69,26 @@ export const getNearbyPlaces = onRequest(async (request, response) => {
   response.json({ data: places });
 });
 
+export const getPlaces = onRequest(async (request, response) => {
+  logger.info("Recevid request 1", request.body, request.query, request.params);
+
+  const titleX = request.body.data?.titleX as string;
+  const titleY = request.body.data?.titleY as string;
+
+  if (!titleX || !titleY) {
+    response.status(400).json({ error: "Invalid request" });
+    return;
+  }
+
+  const places = await markerService.getPlaces(
+    parseFloat(titleX),
+    parseFloat(titleY)
+  );
+
+  logger.info("places", places);
+  response.json({ data: places });
+});
+
 export const importCategories = onRequest(async (request, response) => {
   logger.info("Recevid request to insert data", { structuredData: true });
 
