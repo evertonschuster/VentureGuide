@@ -48,6 +48,7 @@ dependencies:
   reflectable: ^4.0.6
   firebase_core: ^2.24.2
   cloud_functions: ^4.6.10
+  flutter_map_marker_cluster: ^1.3.5
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,36 @@ flutter:
     - .env
     - lib/assets/database/places_brazil.json
     - lib/assets/images/icons/border.png
+    - lib/assets/images/icons/camping.png
+    - lib/assets/images/icons/checkpoint.png
+    - lib/assets/images/icons/consulate.png
+    - lib/assets/images/icons/border.png
+    - lib/assets/images/icons/eco-friendly.png
+    - lib/assets/images/icons/camping.png
+    - lib/assets/images/icons/financial.png
+    - lib/assets/images/icons/fuel-station.png
+    - lib/assets/images/icons/hostel.png
+    - lib/assets/images/icons/hotel.png
+    - lib/assets/images/icons/informal-camp.png
+    - lib/assets/images/icons/laundry.png
+    - lib/assets/images/icons/mechanic.png
+    - lib/assets/images/icons/medical.png
+    - lib/assets/images/icons/other.png
+    - lib/assets/images/icons/pet-services.png
+    - lib/assets/images/icons/propane.png
+    - lib/assets/images/icons/restaurant.png
+    - lib/assets/images/icons/sanitation.png
+    - lib/assets/images/icons/shopping.png
+    - lib/assets/images/icons/shortterm-parking.png
+    - lib/assets/images/icons/showers.png
+    - lib/assets/images/icons/tourist.png
+    - lib/assets/images/icons/vehicle-insurance.png
+    - lib/assets/images/icons/vehicle-shipping.png
+    - lib/assets/images/icons/vehicle-storage.png
+    - lib/assets/images/icons/warning.png
+    - lib/assets/images/icons/water.png
+    - lib/assets/images/icons/wifi.png
+    - lib/assets/images/icons/wild-camp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

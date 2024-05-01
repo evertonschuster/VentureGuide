@@ -42,12 +42,17 @@ class MapProviderController extends ChangeNotifier {
   }
 
   Future<void> _loadMapaMarker() async {
+    if (mapController.camera.zoom < 6) {
+      return;
+    }
+
     var location = mapController.camera.center;
     _markerMapService.loadFromLocation(location);
 
     var bounds = mapController.camera.visibleBounds;
     var southWest = bounds.southWest;
     var northEast = bounds.northEast;
+
 
     _markerMapService.loadFromBound(southWest, northEast);
   }
