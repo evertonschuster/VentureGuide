@@ -22,6 +22,26 @@ class MapProviderWidget extends StatefulWidget {
 }
 
 class _MapProviderWidgetState extends State<MapProviderWidget> {
+  List<Marker> _markers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _createMarkers();
+    widget.controller
+        .addListener(_createMarkers); // Rebuild markers only when necessary
+  }
+
+  void _createMarkers() {
+    _markers = widget.controller.markers.map((e) {
+      return Marker(
+        point: LatLng(e.latitude, e.longitude),
+        child: Image.asset(widget.categoryService.getIcon(e.categoryId)),
+        rotate: true,
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FlutterMap(
@@ -30,24 +50,18 @@ class _MapProviderWidgetState extends State<MapProviderWidget> {
           MapOptions(initialZoom: 11, onMapReady: widget.controller.onMapReady),
       children: [
         openStreetMapTileLayer,
-        // MarkerLayer(markers: allMarkers.take(numOfMarkers).toList()),
         ListenableBuilder(
           listenable: widget.controller,
           builder: (context, child) {
             return MarkerClusterLayerWidget(
               options: MarkerClusterLayerOptions(
+                rotate: true,
+                maxZoom: 8,
                 size: const Size(40, 40),
+                disableClusteringAtZoom: 9,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(50),
-                maxZoom: 8,
-                disableClusteringAtZoom: 10,
-                markers: widget.controller.markers.map((e) {
-                  return Marker(
-                    point: LatLng(e.latitude, e.longitude),
-                    child: Image.asset(widget.categoryService.getIcon(e.categoryId)),
-                    rotate: true,
-                  );
-                }).toList(),
+                markers: _markers,
                 builder: (context, markers) {
                   return Container(
                     decoration: BoxDecoration(
@@ -67,5 +81,11 @@ class _MapProviderWidgetState extends State<MapProviderWidget> {
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_createMarkers);
+    super.dispose();
   }
 }

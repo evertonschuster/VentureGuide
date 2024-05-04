@@ -14,6 +14,7 @@ import * as logger from "firebase-functions/logger";
 import { Category } from "./models/category";
 import * as categoryService from "./services/categoryService";
 import * as markerService from "./services/markerService";
+import * as titleMarkersService from "./services/titleMarkersService";
 import { Place } from "./dtos/place";
 import { Marker } from "./models/marker";
 
@@ -60,7 +61,7 @@ export const getNearbyPlaces = onRequest(async (request, response) => {
     return;
   }
 
-  const places = await markerService.getNearbyPlaces(
+  const places = await titleMarkersService.getNearbyPlaces(
     parseFloat(latitude),
     parseFloat(longitude)
   );
@@ -80,7 +81,7 @@ export const getPlaces = onRequest(async (request, response) => {
     return;
   }
 
-  const places = await markerService.getPlaces(
+  const places = await titleMarkersService.getPlaces(
     parseFloat(titleX),
     parseFloat(titleY)
   );

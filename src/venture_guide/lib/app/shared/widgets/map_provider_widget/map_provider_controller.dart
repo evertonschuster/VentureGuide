@@ -42,7 +42,7 @@ class MapProviderController extends ChangeNotifier {
   }
 
   Future<void> _loadMapaMarker() async {
-    if (mapController.camera.zoom < 6) {
+    if (mapController.camera.zoom < 7) {
       return;
     }
 
