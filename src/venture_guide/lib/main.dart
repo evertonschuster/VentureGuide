@@ -17,8 +17,7 @@ Future<void> main() async {
   initializeReflectable();
   configureDependencies();
 
-  await FlutterMapTileCaching.initialise();
-  await FMTC.instance('mapStore').manage.createAsync();
+  await FMTCObjectBoxBackend().initialise();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
