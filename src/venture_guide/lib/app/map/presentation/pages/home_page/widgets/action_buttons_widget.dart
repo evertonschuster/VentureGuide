@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ActionButtonsWidget extends StatelessWidget {
-  const ActionButtonsWidget({Key? key}) : super(key: key);
+  const ActionButtonsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,10 @@ class ActionButton extends StatelessWidget {
   final String label;
 
   const ActionButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

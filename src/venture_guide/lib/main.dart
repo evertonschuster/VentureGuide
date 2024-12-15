@@ -5,14 +5,14 @@ import 'package:venture_guide/app/injector.dart';
 import 'package:venture_guide/app/map/domain/services/sync_service.dart';
 import 'package:venture_guide/app/map/presentation/pages/home_page/home_page_widget.dart';
 import 'package:venture_guide/main.reflectable.dart';
-import 'package:wakelock/wakelock.dart';
+// import 'package:wakelock/wakelock.dart';
 import 'firebase_options.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  Wakelock.enable();
+  // Wakelock.enable();
 
   initializeReflectable();
   configureDependencies();

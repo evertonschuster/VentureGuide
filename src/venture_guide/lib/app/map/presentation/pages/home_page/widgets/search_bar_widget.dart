@@ -17,7 +17,7 @@ class SearchBarWidget extends StatelessWidget {
         left: pixelRatio * 2,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background.withOpacity(0.6),
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
           color: Theme.of(context).colorScheme.primary,
