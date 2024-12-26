@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "660560608016",
     "project_id": "venture-guide",
-    "storage_bucket": "venture-guide.appspot.com"
+    "storage_bucket": "venture-guide.firebasestorage.app"
   },
   "client": [
     {
